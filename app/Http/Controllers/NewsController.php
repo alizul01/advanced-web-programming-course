@@ -20,4 +20,8 @@ class NewsController extends Controller
             'back' => 'news.index'
         ]);
     }
+
+    public function create() {
+        return view('admin.create');
+    }
 }
