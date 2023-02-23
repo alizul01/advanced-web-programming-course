@@ -16,7 +16,7 @@ class ProgramController extends Controller
         $param = $program->first();
         return view('pages.detail', [
             'param' => $param,
-            'back' => 'program'
+            'back' => 'programs.index'
         ]);
     }
 }

@@ -1,8 +1,21 @@
 @extends('layout.auth')
 
 @section('content')
+    @if (session()->has('success'))
+        <div class="bg-green-500 text-white p-2 rounded">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <form method="POST" class="flex flex-col gap-4 justify-start w-full">
         @csrf
+        <div class="flex flex-col" id="name">
+            <label for="name" class="font-semibold">Nama Lengkap</label>
+            <input type="text" name="name" id="name" class="border border-gray-300 p-2 rounded"
+                value="{{ old('name') }}">
+            @error('name')
+                <p class="text-red-500">{{ $message }}</p>
+            @enderror
+        </div>
         <div class="flex flex-col" id="email">
             <label for="email" class="font-semibold">Email</label>
             <input type="email" name="email" id="email" class="border border-gray-300 p-2 rounded"

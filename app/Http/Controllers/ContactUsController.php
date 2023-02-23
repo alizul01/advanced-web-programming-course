@@ -33,7 +33,7 @@ class ContactUsController extends Controller
             'email' => 'required|email',
             'messages' => 'required'
         ]);
-        return redirect()->route('contact')->with('success', 'Hey, ' . $request->name . ' your message has been sent!');
+        return redirect()->route('contact.index')->with('success', 'Hey, ' . $request->name . ' your message has been sent!');
     }
 
     /**

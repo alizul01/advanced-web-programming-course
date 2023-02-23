@@ -16,7 +16,7 @@ class NewsController extends Controller
         $param = $news->first();
         return view('pages.detail', [
             'param' => $param,
-            'back' => 'news'
+            'back' => 'news.index'
         ]);
     }
 }

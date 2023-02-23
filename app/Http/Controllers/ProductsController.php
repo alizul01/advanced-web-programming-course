@@ -39,7 +39,7 @@ class ProductsController extends Controller
         $param = $products->first();
         return view('pages.detail', [
             'param' => $param,
-            'back' => 'products'
+            'back' => 'products.index'
         ]);
     }
 
