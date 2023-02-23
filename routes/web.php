@@ -21,16 +21,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/about', [AboutController::class, 'index']);
-Route::group(['prefix' => 'products'], function () {
+Route::middleware(['auth'])->prefix('products')->group(function () {
     Route::get('/', [ProductsController::class, 'index'])->name('products');
     Route::get('/{detail}', [ProductsController::class, 'show']);
 });
-Route::group(['prefix' => 'news'], function () {
+
+Route::middleware(['auth'])->prefix('news')->group(function () {
     Route::get('/', [NewsController::class, 'index'])->name('news');
     Route::get('/{detail}', [NewsController::class, 'show']);
 });
+
+Route::middleware(['auth:guest'])->group(function () {
+    Route::get('/login', [HomeController::class, 'login'])->name('login');
+});
+
+Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
+Route::get('/about', [AboutController::class, 'index'])->middleware('auth')->name('about');
 Route::group(['prefix' => 'programs'], function () {
     Route::get('/', [ProgramController::class, 'index'])->name('program');
     Route::get('/{detail}', [ProgramController::class, 'show']);
