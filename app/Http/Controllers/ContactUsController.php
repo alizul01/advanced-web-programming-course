@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactUsController extends Controller
 {
@@ -30,7 +31,7 @@ class ContactUsController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required'
+            'messages' => 'required'
         ]);
         return redirect()->route('contact')->with('success', 'Hey, ' . $request->name . ' your message has been sent!');
     }

@@ -31,11 +31,11 @@
                     <p class="text-red-500">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="flex flex-col" id="password">
-                <label for="password" class="font-semibold">Password</label>
-                <input type="password" name="password" id="password" class="border border-gray-300 p-2 rounded"
-                    value="{{ old('password') }}">
-                @error('password')
+            <div class="flex flex-col" id="messages">
+                <label for="messages" class="font-semibold">Messages</label>
+                <input type="text" name="messages" id="messages" class="border border-gray-300 p-2 rounded"
+                    value="{{ old('messages') }}">
+                @error('messages')
                     <p class="text-red-500">{{ $message }}</p>
                 @enderror
             </div>
