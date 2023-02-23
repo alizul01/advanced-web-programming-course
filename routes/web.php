@@ -9,6 +9,15 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
+Route::middleware(['auth', 'admin'])->group(function() {
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [HomeController::class, 'admin'])->name('admin');
+        Route::resource('news', NewsController::class)->except(['show']);
+        Route::resource('programs', ProgramController::class)->except(['show']);
+        Route::resource('products', ProductsController::class)->except(['show']);
+    });
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
