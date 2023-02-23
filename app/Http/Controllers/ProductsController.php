@@ -12,8 +12,9 @@ class ProductsController extends Controller
      * Display a listing of the resource.
      */
     public function index() {
-        $products = Products::all();
-        return view('pages.product', compact('products'));
+        $items = Products::all();
+        $title = "products";
+        return view('layout.pages', compact('items', 'title'));
     }
 
     /**
@@ -35,8 +36,8 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Products $products) {
-        $param = $products->first();
+    public function show($slug) {
+        $param = Products::where('slug', $slug)->firstOrFail();
         return view('pages.detail', [
             'param' => $param,
             'back' => 'products.index'

@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 class ProgramController extends Controller
 {
     public function index() {
-        $programs = Program::all();
-        return view('pages.program', compact('programs'));
+        $items = Program::all();
+        $title = "programs";
+        return view('layout.pages', compact('items', 'title'));
     }
 
     public function show(Program $program) {

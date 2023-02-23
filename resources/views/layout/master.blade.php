@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="{{asset('assets/img/graphic-designer.png')}}" type="image/x-icon">
 </head>
 
-<body class="bg-[#F0EEED]  w-full h-screen flex justify-center items-center">
+<body class="bg-[#F0EEED]  w-full flex justify-center items-center py-24">
     <div class="max-w-4xl flex justify-center items-center flex-col gap-10">
         @yield('layout')
     </div>

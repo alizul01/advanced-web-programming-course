@@ -19,6 +19,8 @@ class ProductsFactory extends Factory
         return [
             'title' => $this->faker->realText(30),
             'slug' => $this->faker->slug,
+            'image' => $this->faker->imageUrl(640, 480, 'product', true),
+            'tags' => json_encode($this->faker->words(3)),
             'content' => $this->faker->realText(150),
         ];
     }

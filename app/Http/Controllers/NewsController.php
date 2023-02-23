@@ -8,12 +8,13 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
     public function index() {
-        $news = News::all();
-        return view('pages.news', compact('news'));
+        $items = News::all();
+        $title = "news";
+        return view('layout.pages', compact('items', 'title'));
     }
 
-    public function show(News $news) {
-        $param = $news->first();
+    public function show($slug) {
+        $param = News::where('slug', $slug)->firstOrFail();
         return view('pages.detail', [
             'param' => $param,
             'back' => 'news.index'

@@ -17,9 +17,11 @@ class ProgramFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence,
+            'title' => $this->faker->sentence(16),
             'slug' => $this->faker->slug,
-            'content' => $this->faker->paragraph,
+            'image' => $this->faker->imageUrl(640, 480, 'program', true),
+            'tags' => json_encode($this->faker->words(3)),
+            'content' => $this->faker->realText(1000),
         ];
     }
 }
