@@ -15,6 +15,7 @@
             @yield('content')
         </div>
     </main>
+
     <span class="bg-primary w-fit relative bottom-0 border-black border-2 rounded-xl p-3 hover:bg-amber-600 cursor-pointer">
         <div class="shadow-custom h-full flex items-center justify-center">
             Halo, {{ Auth::user()->name }}!
