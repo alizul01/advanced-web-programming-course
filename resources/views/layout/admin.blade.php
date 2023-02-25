@@ -11,7 +11,7 @@
 
 <body class="bg-[#F0EEED]  w-full flex justify-center items-center py-24 min-h-screen flex-col gap-4">
     <span
-        class="bg-primary w-fit relative bottom-0 border-black border-2 rounded-xl p-3">
+        class="bg-primary-900 w-fit relative bottom-0 border-black border-2 rounded-xl p-3">
         <div class="shadow-custom h-full flex items-center justify-center">
             Halo, Admin!
         </div>
@@ -20,9 +20,9 @@
         <aside class="w-64">
             @include('admin.partials.sidebar')
         </aside>
-        <main class="bg-primary w-full relative border-black border-2 rounded-xl p-4">
-            <div class="shadow-custom h-full flex items-center justify-center flex-row">
-                @include('admin.pages')
+        <main class="bg-primary-900 w-full relative border-black border-2 rounded-xl p-4 flex justify-center items-center">
+            <div class="shadow-custom h-full min-h-[16rem] max-w-[50rem]">
+                @yield('content')
             </div>
         </main>
     </div>

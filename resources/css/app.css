@@ -77,4 +77,7 @@ nav:hover, footer:hover, aside:hover {
     .nav-link {
         @apply hover:text-red-600 font-semibold rounded-xl;
     }
+    .active-link {
+        @apply text-red-600;
+    }
 }
