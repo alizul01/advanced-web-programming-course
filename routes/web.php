@@ -12,22 +12,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
-        Route::get('/user', [AdminController::class, 'userIndex'])->name('admin.user');
-        Route::get('/user/{id}', [AdminController::class, 'userShow'])->name('admin.user.show');
-        Route::post('/user/{id}', [AdminController::class, 'userPost'])->name('admin.user.post');
+        Route::controller(AdminController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.dashboard');
+            Route::get('/user', 'userIndex')->name('admin.user');
+            Route::get('/user/{id}', 'userShow')->name('admin.user.show');
+            Route::post('/user/{id}', 'userPost')->name('admin.user.post');
 
-        Route::get('/products', [AdminController::class, 'productIndex'])->name('admin.products');
-        Route::get('/products/{id}', [AdminController::class, 'productsShow'])->name('admin.products.show');
-        Route::post('/products/{id}', [AdminController::class, 'productsPost']);
+            // products
+            Route::get('/products', 'productIndex')->name('admin.products');
+            Route::get('/products/{id}', 'productsShow')->name('admin.products.show');
+            Route::post('/products/{id}', 'productsPost');
 
-        Route::get('/program', [AdminController::class, 'programIndex'])->name('admin.program');
-        Route::get('/program/{id}', [AdminController::class, 'programShow'])->name('admin.program.show');
-        Route::post('/program/{id}', [AdminController::class, 'programPost'])->name('admin.program.post');
+            // program
+            Route::get('/program', 'programIndex')->name('admin.program');
+            Route::get('/program/{id}', 'programShow')->name('admin.program.show');
+            Route::post('/program/{id}', 'programPost')->name('admin.program.post');
 
-        Route::get('/news', [AdminController::class, 'newsIndex'])->name('admin.news');
-        Route::get('/news/{id}', [AdminController::class, 'newsShow'])->name('admin.news.show');
-        Route::post('/news/{id}', [AdminController::class, 'newsPost'])->name('admin.news.post');
+            // news
+            Route::get('/news', 'newsIndex')->name('admin.news');
+            Route::get('/news/{id}', 'newsShow')->name('admin.news.show');
+            Route::post('/news/{id}', 'newsPost')->name('admin.news.post');
+        });
     });
 });
 
@@ -58,8 +63,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/login', [AuthController::class, 'index'])->name('login');
-    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-    Route::get('/register', [AuthController::class, 'registerIndex'])->name('register');
-    Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('/login', 'index')->name('login');
+        Route::post('/login', 'login')->name('login.post');
+        Route::get('/register', 'registerIndex')->name('register');
+        Route::post('/register', 'register')->name('register.post');
+    });
 });

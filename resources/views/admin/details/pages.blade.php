@@ -1,3 +1,8 @@
+@php
+    /** @var $view App\Http\ViewModels\ProfileViewModel */
+    $view->
+@endphp
+
 @extends('layout.admin')
 
 @section('content')

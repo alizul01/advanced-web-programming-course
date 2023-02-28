@@ -49,8 +49,8 @@ class AdminController extends Controller
     }
 
     public function userShow($id) {
-        $user = User::findOrFail($id);
-        return view('admin.details.user-detail', compact('user'));
+        $user = User::where('id', $id)->first();
+        return view('admin.details.user', compact('user'));
     }
 
     public function productsShow() {
