@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactUsController;
@@ -13,25 +14,37 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::controller(AdminController::class)->group(function () {
-            Route::get('/', 'index')->name('admin.dashboard');
-            Route::get('/user', 'userIndex')->name('admin.user');
-            Route::get('/user/{id}', 'userShow')->name('admin.user.show');
-            Route::post('/user/{id}', 'userPost')->name('admin.user.post');
+            Route::resource('user', UserController::class)->parameters([
+                'user' => 'id'
+            ])->names([
+                'index' => 'admin.user',
+                'show' => 'admin.user.show',
+                'edit' => 'admin.user.edit',
+                'update' => 'admin.user.update',
+                'destroy' => 'admin.user.delete'
+            ]);
 
-            // products
+            Route::resource('program', ProgramController::class);
+            Route::get('/', 'index')->name('admin.dashboard');
             Route::get('/products', 'productIndex')->name('admin.products');
             Route::get('/products/{id}', 'productsShow')->name('admin.products.show');
-            Route::post('/products/{id}', 'productsPost');
+            Route::post('/products/{id}', 'productsPost')->name('admin.products.post');
+            Route::put('/products/{id}', 'productsEdit')->name('admin.products.edit');
+            Route::delete('/products/{id}', 'productsDelete')->name('admin.products.delete');
 
-            // program
-            Route::get('/program', 'programIndex')->name('admin.program');
-            Route::get('/program/{id}', 'programShow')->name('admin.program.show');
-            Route::post('/program/{id}', 'programPost')->name('admin.program.post');
+            // // program
+            // Route::get('/program', 'programIndex')->name('admin.program');
+            // Route::get('/program/{id}', 'programShow')->name('admin.program.show');
+            // Route::post('/program/{id}', 'programPost')->name('admin.program.post');
+            // Route::put('/program/{id}', 'programEdit')->name('admin.program.edit');
+            // Route::delete('/program/{id}', 'programDelete')->name('admin.program.delete');
 
             // news
             Route::get('/news', 'newsIndex')->name('admin.news');
             Route::get('/news/{id}', 'newsShow')->name('admin.news.show');
             Route::post('/news/{id}', 'newsPost')->name('admin.news.post');
+            Route::put('/news/{id}', 'newsEdit')->name('admin.news.edit');
+            Route::delete('/news/{id}', 'newsDelete')->name('admin.news.delete');
         });
     });
 });

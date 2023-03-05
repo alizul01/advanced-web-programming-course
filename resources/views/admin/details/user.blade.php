@@ -23,7 +23,7 @@
                             <div class="flex gap-2">
                                 <a href="{{ route('admin.user.show', $page->id) }}"
                                     class="py-2 px-4 text-center bg-blue-400 rounded-lg text-white font-bold">Edit</a>
-                                <form method="POST">
+                                <form method="POST" action="{{ route('admin.user.delete', $page->id) }}" onsubmit="return confirm('u sure?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"

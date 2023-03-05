@@ -10,6 +10,7 @@
 </head>
 
 <body class="bg-[#F0EEED]  w-full flex justify-center items-center py-24 min-h-screen flex-col gap-4">
+    @include('sweetalert::alert')
     <span
         class="bg-primary-900 w-fit relative bottom-0 border-black border-2 rounded-xl p-3">
         <div class="shadow-custom h-full flex items-center justify-center">

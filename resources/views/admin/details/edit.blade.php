@@ -1,14 +1,9 @@
-@if (session('success'))
-    <div class="bg-green-500 text-white p-2 rounded-lg mb-4">
-        {{ session('success') }}
-    </div>
-@endif
 <form method="POST" class="flex flex-col gap-6 justify-start">
     @csrf
     <div class="flex flex-col" id="title">
         <label for="title" class="font-semibold">Title</label>
         <input type="text" name="title" id="title"
-            class="border-2 border-black p-2 rounded-lg focus:outline-none bg-white" value="">
+            class="border-2 border-black p-2 rounded-lg focus:outline-none bg-white" value="{{ old('title') }}">
         @error('title')
             <p class="text-red-500">{{ $message }}</p>
         @enderror

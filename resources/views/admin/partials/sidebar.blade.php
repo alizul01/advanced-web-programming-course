@@ -15,8 +15,8 @@
                 Products
             </a>
         </li>
-        <li class="nav-link @if(Route::currentRouteName() == 'admin.program') active-link @endif">
-            <a href="{{ route('admin.program') }}">
+        <li class="nav-link @if(Route::currentRouteName() == 'program.index') active-link @endif">
+            <a href="{{ route('program.index') }}">
                 Program
             </a>
         </li>

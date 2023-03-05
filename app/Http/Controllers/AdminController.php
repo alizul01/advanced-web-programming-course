@@ -7,6 +7,7 @@ use App\Models\Products;
 use App\Models\Program;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -22,6 +23,17 @@ class AdminController extends Controller
     public function userIndex() {
         $user = User::paginate(10);
         return view('admin.details.user', compact('user'));
+    }
+
+    public function userEdit(Request $request, $id) {
+        $user = User::where('id', $id)->first();
+        User::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+
+        toast()->success('Success', 'User has been updated');
+        return redirect()->route('admin.user');
     }
 
     public function programIndex() {
@@ -50,14 +62,54 @@ class AdminController extends Controller
 
     public function userShow($id) {
         $user = User::where('id', $id)->first();
-        return view('admin.details.user', compact('user'));
+        return view('admin.edit.user', compact('user'));
     }
 
     public function productsShow() {
         $items = User::paginate(10);
-        return view('admin.details.pages', [
+        return view('admin.edit.pages', [
             'items' => $items,
             'title' => 'program'
         ]);
+    }
+
+    public function userDelete($id) {
+        $user = User::where('id', $id)->first();
+        $user->delete();
+
+        Alert::success('Success', 'User has been deleted');
+        return redirect()->back();
+    }
+
+    public function productsDelete($id) {
+        $products = Products::where('id', $id)->first();
+        $products->delete();
+
+        Alert::success('Success', 'products has been deleted');
+        return redirect()->back();
+    }
+
+    public function programDelete($id) {
+        $program = Program::where('id', $id)->first();
+        $program->delete();
+
+        Alert::success('Success', 'program has been deleted');
+        return redirect()->back();
+    }
+
+    public function newsDelete($id) {
+        $news = News::where('id', $id)->first();
+        $news->delete();
+
+        Alert::success('Success', 'news has been deleted');
+        return redirect()->back();
+    }
+
+    public function productsEdit(Request $request, $id) {
+        $products = Products::where('id', $id)->first();
+        $products->delete();
+
+        Alert::success('Success', 'products has been deleted');
+        return redirect()->back();
     }
 }

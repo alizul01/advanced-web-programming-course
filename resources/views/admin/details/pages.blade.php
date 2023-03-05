@@ -1,8 +1,3 @@
-@php
-    /** @var $view App\Http\ViewModels\ProfileViewModel */
-    $view->
-@endphp
-
 @extends('layout.admin')
 
 @section('content')
@@ -32,9 +27,9 @@
                         </td>
                         <td class="border-2 px-4 py-2 border-black">
                             <div class="flex gap-2">
-                                <a href="{{ route('admin.' . $title . '.show', $item->id) }}"
+                                <a href="{{ route($title . '.edit', $item->id) }}"
                                     class="py-2 px-4 text-center bg-blue-400 rounded-lg text-white font-bold">Edit</a>
-                                <form method="POST">
+                                <form method="POST" action="{{ route($title . '.destroy', $item->id) }}" onsubmit="return confirm('Are you sure?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
