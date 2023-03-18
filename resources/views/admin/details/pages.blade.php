@@ -2,6 +2,14 @@
 
 @section('content')
     <div class="mb-4 rounded-lg overflow-hidden p-1 cursor-default">
+        <button
+            class="bg-orange-500 text-white p-2 rounded hover:bg-orange-600 transition-all duration-300 ease-in-out relative shadow-lg shadow-red-200 my-4">
+            <div class="shadow-custom">
+                <a href="{{ route($title . '.create') }}">
+                    Create {{ $title }}
+                </a>
+            </div>
+        </button>
         <table class="table-auto w-full table-striped">
             <thead>
                 <tr>
@@ -18,7 +26,14 @@
                         <td class="border-2 px-4 py-2 border-black font-bold text-center">{{ $item->id }}</td>
                         <td class="border-2 px-4 py-2 border-black">{{ $item->title }}</td>
                         <td class="border-2 px-4 py-2 border-black">
-                            <img src="{{ $item->image }}" alt="{{ $item->title }}" class="w-20">
+                            @if ($item->image != null)
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
+                                    class="w-52" />
+                            @else
+                                <img src="https://via.placeholder.com/150"
+                                    alt="{{ $item->title }}
+                                    class="w-52" />
+                            @endif
                         </td>
                         <td class="border-2 px-4 py-2 border-black w-52">
                             <div class="flex flex-col w-full gap-2">
@@ -29,7 +44,8 @@
                             <div class="flex gap-2">
                                 <a href="{{ route($title . '.edit', $item->id) }}"
                                     class="py-2 px-4 text-center bg-blue-400 rounded-lg text-white font-bold">Edit</a>
-                                <form method="POST" action="{{ route($title . '.destroy', $item->id) }}" onsubmit="return confirm('Are you sure?')">
+                                <form method="POST" action="{{ route($title . '.destroy', $item->id) }}"
+                                    onsubmit="return confirm('Are you sure?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"

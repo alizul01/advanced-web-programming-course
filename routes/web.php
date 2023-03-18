@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
@@ -11,9 +10,8 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth', 'admin'] )->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::controller(AdminController::class)->group(function () {
             Route::resource('user', UserController::class)->parameters([
                 'user' => 'id'
             ])->names([
@@ -23,41 +21,40 @@ Route::middleware(['auth', 'admin'])->group(function () {
                 'update' => 'admin.user.update',
                 'destroy' => 'admin.user.delete'
             ]);
-
-            Route::resource('program', ProgramController::class);
-            Route::get('/', 'index')->name('admin.dashboard');
-            Route::get('/products', 'productIndex')->name('admin.products');
-            Route::get('/products/{id}', 'productsShow')->name('admin.products.show');
-            Route::post('/products/{id}', 'productsPost')->name('admin.products.post');
-            Route::put('/products/{id}', 'productsEdit')->name('admin.products.edit');
-            Route::delete('/products/{id}', 'productsDelete')->name('admin.products.delete');
-
-            // // program
-            // Route::get('/program', 'programIndex')->name('admin.program');
-            // Route::get('/program/{id}', 'programShow')->name('admin.program.show');
-            // Route::post('/program/{id}', 'programPost')->name('admin.program.post');
-            // Route::put('/program/{id}', 'programEdit')->name('admin.program.edit');
-            // Route::delete('/program/{id}', 'programDelete')->name('admin.program.delete');
-
-            // news
-            Route::get('/news', 'newsIndex')->name('admin.news');
-            Route::get('/news/{id}', 'newsShow')->name('admin.news.show');
-            Route::post('/news/{id}', 'newsPost')->name('admin.news.post');
-            Route::put('/news/{id}', 'newsEdit')->name('admin.news.edit');
-            Route::delete('/news/{id}', 'newsDelete')->name('admin.news.delete');
+            Route::resource('program', ProgramController::class)->parameters([
+                'program' => 'id'
+            ])->names([
+                'index' => 'admin.program'
+            ]);
+            Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+            Route::resource('news', NewsController::class)->parameters([
+                'news' => 'id'
+            ])->names([
+                'index' => 'admin.news',
+            ]);
+            Route::resource('products', ProductsController::class)->parameters([
+                'products' => 'id'
+            ])->names([
+                'index' => 'admin.products',
+            ]);
         });
-    });
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/about', [AboutController::class, 'index'])->name('about');
+    Route::get('/about', function() {
+        return response()->view('pages.about');
+    })->name('about');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::prefix('products')->group(function () {
         Route::get('/', [ProductsController::class, 'index'])->name('products.index');
         Route::get('/{detail}', [ProductsController::class, 'show'])->name('products.show');
     });
+
+    Route::resource('program', ProgramController::class)->parameters([
+        'program' => 'id'
+    ])->only(['index', 'show']);
 
     Route::prefix('news')->group(function () {
         Route::get('/', [NewsController::class, 'index'])->name('news.index');
