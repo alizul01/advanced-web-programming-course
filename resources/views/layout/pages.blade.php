@@ -1,6 +1,7 @@
 @extends('index')
 
 @section('content')
+
     <div class="flex flex-col items-center gap-2 w-full">
         <h1 class="font-bold text-2xl capitalize pb-8">
             {{$title}}

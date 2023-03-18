@@ -1,7 +1,11 @@
 <div>
     <div
         class="rounded-lg overflow-hidden flex flex-col max-w-sm flex-grow-1 bg-white h-fit border-2 border-black justify-between">
-        <img class="w-full object-cover max-h-40 min-h-40" src="{{ $image }}" alt="Mountain">
+        @if ($image === null)
+            <img class="w-full object-cover max-h-40 min-h-40" src="{{ asset('assets/placeholder/placeholder.png') }}" alt="Mountain">
+        @else
+            <img class="w-full object-cover max-h-40 min-h-40" src="{{ $image }}" alt="Mountain">
+        @endif
         <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">{{ $title }}</div>
             <p class="text-gray-700 text-base line-clamp-3">

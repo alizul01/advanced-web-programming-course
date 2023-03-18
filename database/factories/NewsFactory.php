@@ -19,7 +19,6 @@ class NewsFactory extends Factory
         return [
             'title' => $this->faker->realText(30),
             'slug' => $this->faker->slug,
-            'image' => $this->faker->imageUrl(640, 480, 'news', true),
             'tags' => json_encode($this->faker->words(2)),
             'content' => $this->faker->realText(150),
         ];

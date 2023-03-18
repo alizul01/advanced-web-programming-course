@@ -10,6 +10,7 @@
 </head>
 
 <body class="bg-[#F0EEED]  w-full flex justify-center items-center py-24">
+    @include('sweetalert::alert')
     <div class="max-w-4xl flex justify-center items-center flex-col gap-10">
         @yield('layout')
     </div>

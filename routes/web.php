@@ -1,32 +1,63 @@
 <?php
 
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ContactUsController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\{
+    Admin\UserController,
+    AdminController,
+    AuthController,
+    ContactUsController,
+    HomeController,
+    NewsController,
+    ProductsController,
+    ProgramController
+};
+
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth', 'admin'])->group(function() {
+Route::middleware(['auth', 'admin'] )->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/', [HomeController::class, 'admin'])->name('admin');
-        Route::resource('news', NewsController::class)->except(['show']);
-        Route::resource('programs', ProgramController::class)->except(['show']);
-        Route::resource('products', ProductsController::class)->except(['show']);
-    });
+            Route::resource('user', UserController::class)->parameters([
+                'user' => 'id'
+            ])->names([
+                'index' => 'admin.user',
+                'show' => 'admin.user.show',
+                'edit' => 'admin.user.edit',
+                'update' => 'admin.user.update',
+                'destroy' => 'admin.user.delete'
+            ]);
+            Route::resource('program', ProgramController::class)->parameters([
+                'program' => 'id'
+            ])->names([
+                'index' => 'admin.program'
+            ]);
+            Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+            Route::resource('news', NewsController::class)->parameters([
+                'news' => 'id'
+            ])->names([
+                'index' => 'admin.news',
+            ]);
+            Route::resource('products', ProductsController::class)->parameters([
+                'products' => 'id'
+            ])->names([
+                'index' => 'admin.products',
+            ]);
+        });
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/about', [AboutController::class, 'index'])->name('about');
+    Route::get('/about', function() {
+        return response()->view('pages.about');
+    })->name('about');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::prefix('products')->group(function () {
         Route::get('/', [ProductsController::class, 'index'])->name('products.index');
         Route::get('/{detail}', [ProductsController::class, 'show'])->name('products.show');
     });
+
+    Route::resource('program', ProgramController::class)->parameters([
+        'program' => 'id'
+    ])->only(['index', 'show']);
 
     Route::prefix('news')->group(function () {
         Route::get('/', [NewsController::class, 'index'])->name('news.index');
@@ -45,9 +76,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/login', [AuthController::class, 'index'])->name('login');
-    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-    Route::get('/register', [AuthController::class, 'registerIndex'])->name('register');
-    Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('/login', 'index')->name('login');
+        Route::post('/login', 'login')->name('login.post');
+        Route::get('/register', 'registerIndex')->name('register');
+        Route::post('/register', 'register')->name('register.post');
+    });
 });
-

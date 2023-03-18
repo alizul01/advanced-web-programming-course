@@ -10,4 +10,14 @@ class Program extends Model
     use HasFactory;
     protected $table = 'programs';
     protected $guarded = ['id'];
+
+    // json
+    protected $casts = [
+        'tags' => 'array'
+    ];
+
+    public function getContentAttribute($value)
+    {
+        return json_decode($value);
+    }
 }

@@ -11,18 +11,18 @@
 }
 
 /* CSS */
-nav, footer {
+nav, footer, aside {
     align-items: center;
     background-color: #fee6e3;
     border: 2px solid #111;
     border-radius: 8px;
     box-sizing: border-box;
     color: #111;
-    cursor: pointer;
+    cursor: default;
     display: flex;
     font-family: Inter, sans-serif;
     font-size: 16px;
-    height: 50px;
+    min-height: 50px;;
     justify-content: center;
     line-height: 24px;
     padding: 0 25px;
@@ -34,16 +34,16 @@ nav, footer {
     touch-action: manipulation;
 }
 
-nav:after, footer::after {
+nav:after, footer::after, aside::after {
     background-color: #111;
     border-radius: 8px;
     content: "";
     display: block;
-    height: 48px;
+    height: 100%;
     left: 0;
     width: 100%;
     position: absolute;
-    top: -2px;
+    bottom: 0;
     transform: translate(6px, 6px);
     transition: transform 0.2s ease-out;
     z-index: -1;
@@ -54,7 +54,6 @@ nav:after, footer::after {
     border-radius: 8px;
     content: "";
     display: block;
-    height: 48px;
     left: 0;
     width: 100%;
     position: absolute;
@@ -65,17 +64,20 @@ nav:after, footer::after {
     z-index: -1;
 }
 
-nav:active, footer:active {
+nav:active, footer:active, aside:active {
     background-color: #ffdeda;
     outline: 0;
 }
 
-nav:hover, footer:hover {
+nav:hover, footer:hover, aside:hover {
     outline: 0;
 }
 
 @layer components {
     .nav-link {
         @apply hover:text-red-600 font-semibold rounded-xl;
+    }
+    .active-link {
+        @apply text-red-600;
     }
 }
