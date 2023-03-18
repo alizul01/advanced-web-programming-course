@@ -25,9 +25,7 @@
         <div class="flex flex-col" id="content">
             <label for="content" class="font-semibold">Content</label>
             <textarea type="text" name="content" id="content"
-                class="border-2 border-black p-2 rounded-lg focus:outline-none bg-white h-72">
-                {{ $item->content }}
-            </textarea>
+                class="border-2 border-black p-2 rounded-lg focus:outline-none bg-white h-72">{{ $item->content }}</textarea>
             @error('content')
                 <p class="text-red-500">{{ $message }}</p>
             @enderror

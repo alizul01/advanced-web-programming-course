@@ -66,7 +66,7 @@ class UserController extends Controller
         $user = User::where('id', $id)->first();
         $user->delete();
 
-        Alert::success('Success', 'User has been deleted');
+        toast()->success('Success', 'User has been deleted');
         return redirect()->back();
     }
 }

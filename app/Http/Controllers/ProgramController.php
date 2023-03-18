@@ -59,7 +59,7 @@ class ProgramController extends Controller
             'slug' => str()->slug($request->title)
         ]);
         toast()->success('Success', 'program has been created');
-        return redirect()->route('program.index');
+        return redirect()->route('admin.program');
     }
 
 
@@ -97,7 +97,7 @@ class ProgramController extends Controller
         ]);
 
         toast()->success('Success', 'program has been updated');
-        return redirect()->route('program.index');
+        return redirect()->route('admin.program');
     }
 
     /**
@@ -108,7 +108,7 @@ class ProgramController extends Controller
         $program = Program::where('id', $id)->first();
         $program->delete();
 
-        Alert::success('Success', 'program has been deleted');
+        toast()->success('Success', 'program has been deleted');
         return redirect()->back();
     }
 }

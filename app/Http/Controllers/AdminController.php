@@ -77,7 +77,7 @@ class AdminController extends Controller
         $user = User::where('id', $id)->first();
         $user->delete();
 
-        Alert::success('Success', 'User has been deleted');
+        toast()->success('Success', 'User has been deleted');
         return redirect()->back();
     }
 
@@ -85,7 +85,7 @@ class AdminController extends Controller
         $products = Products::where('id', $id)->first();
         $products->delete();
 
-        Alert::success('Success', 'products has been deleted');
+        toast()->success('Success', 'products has been deleted');
         return redirect()->back();
     }
 
@@ -93,7 +93,7 @@ class AdminController extends Controller
         $program = Program::where('id', $id)->first();
         $program->delete();
 
-        Alert::success('Success', 'program has been deleted');
+        toast()->success('Success', 'program has been deleted');
         return redirect()->back();
     }
 
@@ -101,7 +101,7 @@ class AdminController extends Controller
         $news = News::where('id', $id)->first();
         $news->delete();
 
-        Alert::success('Success', 'news has been deleted');
+        toast()->success('Success', 'news has been deleted');
         return redirect()->back();
     }
 
@@ -109,7 +109,7 @@ class AdminController extends Controller
         $products = Products::where('id', $id)->first();
         $products->delete();
 
-        Alert::success('Success', 'products has been deleted');
+        toast()->success('Success', 'products has been deleted');
         return redirect()->back();
     }
 }

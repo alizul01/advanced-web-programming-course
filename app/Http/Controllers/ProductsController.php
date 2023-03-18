@@ -108,7 +108,7 @@ class ProductsController extends Controller
         $products = Products::where('id', $id)->first();
         $products->delete();
 
-        Alert::success('Success', 'products has been deleted');
+        toast()->success('Success', 'products has been deleted');
         return redirect()->back();
     }
 }
