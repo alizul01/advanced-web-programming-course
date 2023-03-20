@@ -68,10 +68,10 @@ class ProgramController extends Controller
      */
     public function show(Program $program)
     {
-        $param = $program->first();
+        $param = $program;
         return view('pages.detail', [
             'param' => $param,
-            'back' => 'programs.index'
+            'back' => 'program.index'
         ]);
     }
 

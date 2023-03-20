@@ -48,7 +48,7 @@ class AdminController extends Controller
         $items = Products::paginate(10);
         return view('admin.details.pages', [
             'items' => $items,
-            'title' => 'products'
+            'title' => 'product'
         ]);
     }
 

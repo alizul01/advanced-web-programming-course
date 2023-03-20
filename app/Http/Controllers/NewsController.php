@@ -62,13 +62,12 @@ class NewsController extends Controller
         return redirect()->route('admin.news');
     }
 
-
     /**
      * Display the specified resource.
      */
     public function show(News $news)
     {
-        $param = $news->first();
+        $param = $news;
         return view('pages.detail', [
             'param' => $param,
             'back' => 'news.index'

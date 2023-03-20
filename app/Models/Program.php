@@ -20,4 +20,9 @@ class Program extends Model
     {
         return json_decode($value);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

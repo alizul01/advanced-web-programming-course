@@ -10,4 +10,9 @@ class News extends Model
     use HasFactory;
     protected $table = 'news';
     protected $guarded = ['id'];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
