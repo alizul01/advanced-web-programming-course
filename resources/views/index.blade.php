@@ -18,7 +18,7 @@
 
     <span class="bg-primary-900 w-fit relative bottom-0 border-black border-2 rounded-xl p-3 hover:bg-amber-600 cursor-pointer">
         <div class="shadow-custom h-full flex items-center justify-center">
-            Halo, {{ Auth::user()->name }}!
+            Halo, {{ Auth::user()->name }}! email saya {{ Auth::user()->email  }}
         </div>
     </span>
     <footer>

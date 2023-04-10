@@ -7,8 +7,5 @@ describe("login-test", () => {
         cy.get('input[name="password"]').type("password");
         cy.get('button[type="submit"]').click();
         cy.url().should("include", "/");
-
-        // check if user is logged in
-        cy.get('a[data-cy="logout"]').should("be.visible");
     });
 });

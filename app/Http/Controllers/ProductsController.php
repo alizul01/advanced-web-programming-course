@@ -52,9 +52,12 @@ class ProductsController extends Controller
             'image.max' => 'Image may not be greater than 2048 kilobytes',
         ]);
 
+
+
         Products::create([
             'title' => $request->title,
             'content' => $request->content,
+            'user_id' => auth()->user()->id,
             'image' => $request->file('image')->store('assets/products', 'public'),
             'slug' => str()->slug($request->title)
         ]);

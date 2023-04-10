@@ -4,7 +4,7 @@
         @if ($image === null)
             <img class="w-full object-cover max-h-40 min-h-40" src="{{ asset('assets/placeholder/placeholder.png') }}" alt="Mountain">
         @else
-            <img class="w-full object-cover max-h-40 min-h-40" src="{{ $image }}" alt="Mountain">
+            <img class="w-full object-cover max-h-40 min-h-40" src="{{ asset('storage/' . $image) }}" alt="Mountain">
         @endif
         <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">{{ $title }}</div>
@@ -17,13 +17,13 @@
                 Detail
             </a>
         </div>
-        <div class="px-6 pt-4 pb-2">
+        {{-- <div class="px-6 pt-4 pb-2">
             @foreach (json_decode($tags) as $tag)
                 <span
                     class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                     {{ $tag }}
                 </span>
             @endforeach
-        </div>
+        </div> --}}
     </div>
 </div>

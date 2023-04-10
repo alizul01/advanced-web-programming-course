@@ -1,0 +1,570 @@
+{
+  "cypress.factory": {
+    "name": "cypress.factory",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@factory",
+    "uri": "__cypress__/factory",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.login": {
+    "name": "cypress.login",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@login",
+    "uri": "__cypress__/login",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.logout": {
+    "name": "cypress.logout",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@logout",
+    "uri": "__cypress__/logout",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.artisan": {
+    "name": "cypress.artisan",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@artisan",
+    "uri": "__cypress__/artisan",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.run-php": {
+    "name": "cypress.run-php",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@runPhp",
+    "uri": "__cypress__/run-php",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.csrf-token": {
+    "name": "cypress.csrf-token",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@csrfToken",
+    "uri": "__cypress__/csrf_token",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "cypress.routes": {
+    "name": "cypress.routes",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@routes",
+    "uri": "__cypress__/routes",
+    "method": [
+      "POST"
+    ]
+  },
+  "cypress.current-user": {
+    "name": "cypress.current-user",
+    "domain": null,
+    "action": "Laracasts\\Cypress\\Controllers\\CypressController@currentUser",
+    "uri": "__cypress__/current-user",
+    "method": [
+      "POST"
+    ]
+  },
+  "sanctum.csrf-cookie": {
+    "name": "sanctum.csrf-cookie",
+    "domain": null,
+    "action": "Laravel\\Sanctum\\Http\\Controllers\\CsrfCookieController@show",
+    "uri": "sanctum/csrf-cookie",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "ignition.healthCheck": {
+    "name": "ignition.healthCheck",
+    "domain": null,
+    "action": "Spatie\\LaravelIgnition\\Http\\Controllers\\HealthCheckController",
+    "uri": "_ignition/health-check",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "ignition.executeSolution": {
+    "name": "ignition.executeSolution",
+    "domain": null,
+    "action": "Spatie\\LaravelIgnition\\Http\\Controllers\\ExecuteSolutionController",
+    "uri": "_ignition/execute-solution",
+    "method": [
+      "POST"
+    ]
+  },
+  "ignition.updateConfig": {
+    "name": "ignition.updateConfig",
+    "domain": null,
+    "action": "Spatie\\LaravelIgnition\\Http\\Controllers\\UpdateConfigController",
+    "uri": "_ignition/update-config",
+    "method": [
+      "POST"
+    ]
+  },
+  "": {
+    "name": null,
+    "domain": null,
+    "action": "Closure",
+    "uri": "api/user",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "product.index": {
+    "name": "product.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ProductAPIController@index",
+    "uri": "api/product",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "product.store": {
+    "name": "product.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ProductAPIController@store",
+    "uri": "api/product",
+    "method": [
+      "POST"
+    ]
+  },
+  "product.show": {
+    "name": "product.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ProductAPIController@show",
+    "uri": "api/product/{product}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "product.update": {
+    "name": "product.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ProductAPIController@update",
+    "uri": "api/product/{product}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "product.destroy": {
+    "name": "product.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Api\\ProductAPIController@destroy",
+    "uri": "api/product/{product}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "admin.user": {
+    "name": "admin.user",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Admin\\UserController@index",
+    "uri": "admin/user",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "user.create": {
+    "name": "user.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Admin\\UserController@create",
+    "uri": "admin/user/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "admin.user.pdf": {
+    "name": "admin.user.pdf",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Admin\\UserController@exportToPDF",
+    "uri": "admin/user",
+    "method": [
+      "POST"
+    ]
+  },
+  "admin.user.show": {
+    "name": "admin.user.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Admin\\UserController@show",
+    "uri": "admin/user/{id}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "admin.user.edit": {
+    "name": "admin.user.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Admin\\UserController@edit",
+    "uri": "admin/user/{id}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "admin.user.update": {
+    "name": "admin.user.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Admin\\UserController@update",
+    "uri": "admin/user/{id}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "admin.user.delete": {
+    "name": "admin.user.delete",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Admin\\UserController@destroy",
+    "uri": "admin/user/{id}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "admin.program": {
+    "name": "admin.program",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProgramController@index",
+    "uri": "admin/program",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "program.create": {
+    "name": "program.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProgramController@create",
+    "uri": "admin/program/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "program.store": {
+    "name": "program.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProgramController@store",
+    "uri": "admin/program",
+    "method": [
+      "POST"
+    ]
+  },
+  "program.edit": {
+    "name": "program.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProgramController@edit",
+    "uri": "admin/program/{id}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "program.update": {
+    "name": "program.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProgramController@update",
+    "uri": "admin/program/{id}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "program.destroy": {
+    "name": "program.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProgramController@destroy",
+    "uri": "admin/program/{id}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "admin.dashboard": {
+    "name": "admin.dashboard",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AdminController@index",
+    "uri": "admin",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "admin.news": {
+    "name": "admin.news",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NewsController@index",
+    "uri": "admin/news",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "news.create": {
+    "name": "news.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NewsController@create",
+    "uri": "admin/news/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "news.store": {
+    "name": "news.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NewsController@store",
+    "uri": "admin/news",
+    "method": [
+      "POST"
+    ]
+  },
+  "news.show": {
+    "name": "news.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NewsController@show",
+    "uri": "news/{news}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "news.edit": {
+    "name": "news.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NewsController@edit",
+    "uri": "admin/news/{id}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "news.update": {
+    "name": "news.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NewsController@update",
+    "uri": "admin/news/{id}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "news.destroy": {
+    "name": "news.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NewsController@destroy",
+    "uri": "admin/news/{id}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "admin.products": {
+    "name": "admin.products",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductsController@index",
+    "uri": "admin/products",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "products.create": {
+    "name": "products.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductsController@create",
+    "uri": "admin/products/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "products.store": {
+    "name": "products.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductsController@store",
+    "uri": "admin/products",
+    "method": [
+      "POST"
+    ]
+  },
+  "products.show": {
+    "name": "products.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductsController@show",
+    "uri": "products/{product}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "products.edit": {
+    "name": "products.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductsController@edit",
+    "uri": "admin/products/{id}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "products.update": {
+    "name": "products.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductsController@update",
+    "uri": "admin/products/{id}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "products.destroy": {
+    "name": "products.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductsController@destroy",
+    "uri": "admin/products/{id}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "home": {
+    "name": "home",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\HomeController@index",
+    "uri": "/",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "about": {
+    "name": "about",
+    "domain": null,
+    "action": "Closure",
+    "uri": "about",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "logout": {
+    "name": "logout",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuthController@logout",
+    "uri": "logout",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "products.index": {
+    "name": "products.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProductsController@index",
+    "uri": "products",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "program.index": {
+    "name": "program.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProgramController@index",
+    "uri": "program",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "program.show": {
+    "name": "program.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ProgramController@show",
+    "uri": "program/{program}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "news.index": {
+    "name": "news.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\NewsController@index",
+    "uri": "news",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "contact.index": {
+    "name": "contact.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ContactUsController@index",
+    "uri": "contact",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "contact.store": {
+    "name": "contact.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ContactUsController@store",
+    "uri": "contact",
+    "method": [
+      "POST"
+    ]
+  },
+  "login": {
+    "name": "login",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuthController@index",
+    "uri": "login",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "login.post": {
+    "name": "login.post",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuthController@login",
+    "uri": "login",
+    "method": [
+      "POST"
+    ]
+  },
+  "register": {
+    "name": "register",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuthController@registerIndex",
+    "uri": "register",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "register.post": {
+    "name": "register.post",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuthController@register",
+    "uri": "register",
+    "method": [
+      "POST"
+    ]
+  }
+}

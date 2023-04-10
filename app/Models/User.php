@@ -33,4 +33,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function program() {
+        return $this->hasMany(Program::class);
+    }
+
+    public function news() {
+        return $this->hasMany(News::class);
+    }
 }

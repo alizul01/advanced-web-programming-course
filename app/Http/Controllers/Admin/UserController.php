@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\PDFReportingService;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -16,6 +17,12 @@ class UserController extends Controller
     {
         $user = User::paginate(10);
         return view('admin.details.user', compact('user'));
+    }
+
+    public function exportToPDF() {
+        $user = User::paginate(10);
+        $pdf = new PDFReportingService();
+        return $pdf->exportToPDF($user);
     }
 
     /**

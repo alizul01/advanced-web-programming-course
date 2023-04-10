@@ -20,6 +20,7 @@ class NewsFactory extends Factory
             'title' => $this->faker->realText(30),
             'slug' => $this->faker->slug,
             'tags' => json_encode($this->faker->words(2)),
+            'user_id' => $this->faker->numberBetween(1, 10),
             'content' => $this->faker->realText(150),
         ];
     }

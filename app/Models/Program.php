@@ -25,4 +25,8 @@ class Program extends Model
     {
         return 'slug';
     }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

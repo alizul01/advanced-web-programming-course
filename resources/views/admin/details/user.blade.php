@@ -1,5 +1,3 @@
-
-
 @extends('layout.admin')
 
 @section('content')
@@ -41,5 +39,15 @@
         <div class="col-md-12">
             {{ $user->links('pagination::tailwind') }}
         </div>
+    </div>
+
+    {{-- button to call UserController for controller function call --}}
+    <div class="flex justify-center">
+        <form action="{{ route('admin.user.pdf') }}" method="POST">
+            @csrf
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Generate PDF
+            </button>
+        </form>
     </div>
 @endsection
