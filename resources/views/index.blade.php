@@ -24,4 +24,6 @@
     <footer>
         @include('components.footer')
     </footer>
+
+    
 @endsection

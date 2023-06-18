@@ -5,21 +5,20 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Models\Products;
-use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductAPIController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        Products::all();
-
+        Product::all();
         return response()->json([
             'message' => 'success',
-            'data' => Products::all()
+            'data' => Product::all()
         ], 200);
     }
 
@@ -28,28 +27,36 @@ class ProductAPIController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $product = Products::create($request->validated());
-
+        $product = Product::create($request->validated());
         return response()->json([
             'message' => 'success',
             'data' => $product
         ], 201);
     }
 
+
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return response()->json([
+            'message' => 'success',
+            'data' => $product
+        ], 200);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Products $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-
+        $product->update($request->validated());
+        return response()->json([
+            'message' => 'success',
+            'data' => $product
+        ], 200);
     }
 
     /**
@@ -57,6 +64,10 @@ class ProductAPIController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return response()->json([
+            'message' => 'success',
+        ], 200);
     }
 }
