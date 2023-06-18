@@ -34,4 +34,11 @@
                 class="text-red-500 hover:text-red-600">Register</a>
         </span>
     </form>
+
+    <script>
+        const data = []
+        fetch('http://127.0.0.1:8000/api/product').then(res => res.json()).then(res => {
+            data.push(res)
+        })
+    </script>
 @endsection

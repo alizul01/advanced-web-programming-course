@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProgramRequest;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -38,26 +39,9 @@ class ProgramController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProgramRequest $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ], [
-            'title.required' => 'Title is required',
-            'content.required' => 'Content is required',
-            'image.required' => 'Image is required',
-            'image.mimes' => 'Image must be a file of type: jpeg, png, jpg, gif, svg',
-            'image.max' => 'Image may not be greater than 2048 kilobytes',
-        ]);
-
-        Program::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'image' => $request->file('image')->store('assets/program', 'public'),
-            'slug' => str()->slug($request->title)
-        ]);
+        Program::create($request->validated());
         toast()->success('Success', 'program has been created');
         return redirect()->route('admin.program');
     }
@@ -68,10 +52,10 @@ class ProgramController extends Controller
      */
     public function show(Program $program)
     {
-        $param = $program->first();
+        $param = $program;
         return view('pages.detail', [
             'param' => $param,
-            'back' => 'programs.index'
+            'back' => 'program.index'
         ]);
     }
 

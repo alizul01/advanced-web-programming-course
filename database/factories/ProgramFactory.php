@@ -21,6 +21,7 @@ class ProgramFactory extends Factory
             'slug' => $this->faker->slug,
             'tags' => json_encode($this->faker->words(3)),
             'content' => $this->faker->realText(1000),
+            'user_id' => $this->faker->numberBetween(1, 10)
         ];
     }
 }

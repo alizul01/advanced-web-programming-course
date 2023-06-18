@@ -19,7 +19,7 @@ class AdminMiddleware
         if (Auth::check() && Auth::user()->role == 'admin') {
             return $next($request);
         } else {
-            return redirect()->route('home')->with('error', 'You are not allowed to access this page');
+            return redirect()->route('home')->toast('error', 'You are not allowed to access this page');
         }
     }
 }
